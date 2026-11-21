@@ -1,0 +1,81 @@
+:root {
+  /* Base neutre + couleurs tirées du logo */
+  --text: #1f2933;
+  --muted: #52606d;
+  --bg: #ffffff;
+  --bg-soft: #f5f7fa;
+  --border: #e1e6ec;
+  --primary: #2a35c9;      /* bleu du logo, adouci */
+  --primary-dark: #1f28a0;
+  --green: #1b7a1b;
+  --gold: #e8a317;
+  --red: #e02020;
+  --purple: #6a2fa0;
+  --radius: 12px;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  color: var(--text);
+  background: var(--bg);
+  line-height: 1.65;
+}
+
+h1, h2, h3 { line-height: 1.2; margin: 0 0 0.75rem; }
+h1 { font-size: clamp(2rem, 5vw, 3rem); }
+h2 { font-size: clamp(1.5rem, 3vw, 2rem); }
+h3 { font-size: 1.2rem; }
+p { margin: 0 0 1rem; }
+
+a { color: var(--primary); }
+
+.container { width: min(1100px, 100% - 2rem); margin-inline: auto; }
+
+.section { padding-block: 3.5rem; }
+.section.soft { background: var(--bg-soft); }
+
+.hero { padding-block: 5rem 4rem; }
+.hero p { font-size: 1.15rem; color: var(--muted); max-width: 42rem; }
+
+.actions { display: flex; gap: 0.75rem; flex-wrap: wrap; margin-top: 1.5rem; }
+
+.btn {
+  display: inline-block;
+  padding: 0.75rem 1.4rem;
+  border-radius: 8px;
+  font-weight: 600;
+  text-decoration: none;
+  border: 2px solid var(--primary);
+  background: var(--primary);
+  color: #fff;
+}
+.btn:hover { background: var(--primary-dark); border-color: var(--primary-dark); }
+.btn.secondary { background: transparent; color: var(--primary); }
+.btn.secondary:hover { background: var(--bg-soft); }
+
+.grid { display: grid; gap: 1.25rem; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
+
+.card {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-top: 4px solid var(--primary);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+}
+.card:nth-child(3n+1) { border-top-color: var(--green); }
+.card:nth-child(3n+2) { border-top-color: var(--gold); }
+.card:nth-child(3n+3) { border-top-color: var(--purple); }
+.card p { color: var(--muted); margin: 0; }
+
+.prose { max-width: 46rem; }
+.prose p { font-size: 1.05rem; }
+
+.lead { color: var(--muted); font-size: 1.1rem; max-width: 42rem; }
+
+.cta-band { text-align: center; }
+.cta-band .actions { justify-content: center; }
