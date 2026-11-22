@@ -1,0 +1,30 @@
+---
+// Logo en texte, lettre par lettre, aux couleurs du logo Comstratus.
+// À remplacer par l'image du logo (SVG de préférence) quand elle sera disponible.
+const letters = [
+  ['C', '#1b7a1b'],
+  ['o', '#e8a317'],
+  ['m', '#4a8a2a'],
+  ['S', '#e02020'],
+  ['t', '#1a1ae6'],
+  ['r', '#8fe040'],
+  ['a', '#6a2fa0'],
+  ['t', '#6a2fa0'],
+  ['u', '#6a2fa0'],
+  ['s', '#e02020'],
+];
+---
+
+<span class="wordmark" aria-label="Comstratus">
+  {letters.map(([ch, color]) => <span style={`color:${color}`} aria-hidden="true">{ch}</span>)}
+</span>
+
+<style>
+  .wordmark {
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: 1.9rem;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    line-height: 1;
+  }
+</style>
