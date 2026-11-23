@@ -45,7 +45,7 @@ git commit -m "Description courte du changement"
 git push                         # envoyer sur GitHub
 ```
 
-Pour récupérer le code sur un autre ordinateur : `git clone https://github.com//comstratus.git`
+Pour récupérer le code sur un autre ordinateur : `git clone https://github.com/haithssain/comstratus.git`
 
 ## Structure du projet
 
