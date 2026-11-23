@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Comstratus : site web (étape 1)
 
 Site vitrine bilingue (français / anglais) construit avec [Astro](https://astro.build).
@@ -84,3 +85,8 @@ Le site généré (`dist/`) est statique. Il peut être hébergé gratuitement s
 
 - Étape 2 : pages supplémentaires (blogue, études de cas, FAQ…)
 - Étape 3 : système d'administration (back-end, base de données, authentification)
+=======
+# comstratus
+
+Generate or create comstratus website with ai, with min manual touches
+>>>>>>> 26688fa9eb8e8b7fc188a28cbbe27abb82ee6258
