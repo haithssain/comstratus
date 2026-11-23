@@ -32,7 +32,7 @@ git init
 git add .
 git commit -m "Étape 1 : site vitrine bilingue"
 git branch -M main
-git remote add origin https://github.com/VOTRE-NOM-UTILISATEUR/comstratus.git
+git remote add origin https://github.com/haithssain/comstratus.git
 git push -u origin main
 ```
 
@@ -45,7 +45,7 @@ git commit -m "Description courte du changement"
 git push                         # envoyer sur GitHub
 ```
 
-Pour récupérer le code sur un autre ordinateur : `git clone https://github.com/VOTRE-NOM-UTILISATEUR/comstratus.git`
+Pour récupérer le code sur un autre ordinateur : `git clone https://github.com//comstratus.git`
 
 ## Structure du projet
 
