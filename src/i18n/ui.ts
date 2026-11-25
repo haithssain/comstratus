@@ -112,8 +112,8 @@ export const ui = {
     },
     about: {
       title: 'About | Comstratus',
-      description: 'Learn about Comstratus and our approach to IT consulting.',
-      heading: 'About Comstratus',
+      description: 'Learn about Comstratus Inc. and our approach to IT consulting.',
+      heading: 'About Comstratus Inc.',
       paragraphs: [
         'Comstratus is an information technology consulting firm. Our mission is to help organizations make the most of digital technology and artificial intelligence in a pragmatic and responsible way.',
         'Our approach is built on listening, clarity and measurable results. We favour solutions that fit your needs over fashionable technology.',
