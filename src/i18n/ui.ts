@@ -3,6 +3,7 @@
 export const languages = {
   fr: 'Français',
   en: 'English',
+  ar: 'العربية',
 } as const;
 
 export type Lang = keyof typeof languages;
@@ -13,6 +14,7 @@ export const ui = {
     siteName: 'Comstratus',
     nav: { home: 'Accueil', services: 'Services', about: 'À propos', contact: 'Contact' },
     langLabel: 'Langue',
+    navLabel: 'Navigation principale',
     home: {
       title: 'Comstratus | Conseils en technologies de l’information et IA',
       description:
@@ -77,6 +79,7 @@ export const ui = {
     siteName: 'Comstratus',
     nav: { home: 'Home', services: 'Services', about: 'About', contact: 'Contact' },
     langLabel: 'Language',
+    navLabel: 'Main navigation',
     home: {
       title: 'Comstratus | IT Consulting and AI',
       description:
@@ -136,5 +139,70 @@ export const ui = {
       note: 'A contact form will be added in a later step.',
     },
     footer: { rights: 'All rights reserved.' },
+  },
+  ar: {
+    siteName: 'Comstratus',
+    nav: { home: 'الرئيسية', services: 'الخدمات', about: 'من نحن', contact: 'اتصل بنا' },
+    langLabel: 'اللغة',
+    navLabel: 'التنقل الرئيسي',
+    home: {
+      title: 'Comstratus | استشارات تقنية المعلومات والذكاء الاصطناعي',
+      description:
+        'تدعم Comstratus المؤسسات في استشارات تقنية المعلومات والتحول الرقمي بالاستفادة من الذكاء الاصطناعي.',
+      heroTitle: 'التقنية في خدمة نموّكم',
+      heroText:
+        'نرافق المؤسسات في اختيار التقنيات وتحولها الرقمي، ونجعل الذكاء الاصطناعي أداة عملية لتحسين الأداء.',
+      ctaPrimary: 'لنتحدث عن مشروعكم',
+      ctaSecondary: 'استكشفوا خدماتنا',
+      servicesTitle: 'ما نقدّمه',
+      ctaTitle: 'هل لديكم مشروع؟',
+      ctaText: 'يسعدنا التحدث معكم؛ اللقاء الأول دون أي التزام.',
+    },
+    services: {
+      title: 'الخدمات | Comstratus',
+      description: 'استشارات تقنية المعلومات والذكاء الاصطناعي والتحول الرقمي والخدمات ذات الصلة.',
+      heading: 'خدماتنا',
+      intro: 'خدمات تناسب احتياجات مؤسستكم، من التحليل إلى التنفيذ.',
+      items: [
+        {
+          title: 'استشارات تقنية المعلومات',
+          text: 'تقييم بيئة تقنية المعلومات لديكم، واختيار الحلول، وتصميم البنية التقنية، ووضع خارطة طريق، ودعم اتخاذ القرار.',
+        },
+        {
+          title: 'الذكاء الاصطناعي والتحول الرقمي',
+          text: 'تحديد حالات استخدام الذكاء الاصطناعي، وأتمتة العمليات، ورقمنة أعمالكم.',
+        },
+        {
+          title: 'خدمات مساندة',
+          text: 'إدارة المشاريع والتدريب ومواكبة التغيير، ودعم تنفيذ حلولكم.',
+        },
+      ],
+    },
+    about: {
+      title: 'من نحن | Comstratus',
+      description: 'تعرّفوا على Comstratus ونهجنا في استشارات تقنية المعلومات.',
+      heading: 'عن Comstratus',
+      paragraphs: [
+        'Comstratus شركة استشارات في تقنية المعلومات. تتمثل رسالتنا في مساعدة المؤسسات على الاستفادة من التقنيات الرقمية والذكاء الاصطناعي بطريقة عملية ومسؤولة.',
+        'يقوم نهجنا على الإصغاء والوضوح وتحقيق نتائج قابلة للقياس. ونفضّل الحلول المناسبة لاحتياجاتكم على التقنيات الرائجة لمجرد رواجها.',
+      ],
+      valuesTitle: 'قيمنا',
+      values: [
+        { title: 'الوضوح', text: 'توصيات مفهومة تساعد على اتخاذ قرارات مستنيرة.' },
+        { title: 'العملية', text: 'حلول واقعية تناسب سياقكم وميزانيتكم.' },
+        { title: 'الثقة', text: 'علاقة شفافة تحترم سرية بياناتكم.' },
+      ],
+    },
+    contact: {
+      title: 'اتصل بنا | Comstratus',
+      description: 'تواصلوا مع Comstratus لمناقشة مشروعكم.',
+      heading: 'تواصلوا معنا',
+      intro: 'أخبرونا عن مشروعكم أو احتياجاتكم وسنعاود التواصل معكم قريبًا.',
+      emailLabel: 'البريد الإلكتروني',
+      email: 'info@comstratus.com',
+      button: 'أرسلوا لنا رسالة',
+      note: 'ستُضاف استمارة للتواصل في مرحلة لاحقة.',
+    },
+    footer: { rights: 'جميع الحقوق محفوظة.' },
   },
 } as const;
