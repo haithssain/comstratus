@@ -12,6 +12,7 @@ export const defaultLang: Lang = 'fr';
 export const ui = {
   fr: {
     siteName: 'Comstratus',
+    aiBuildNote: 'Conçu entièrement avec des outils d’IA gratuits',
     nav: { home: 'Accueil', services: 'Services', about: 'À propos', contact: 'Contact' },
     langLabel: 'Langue',
     navLabel: 'Navigation principale',
@@ -77,6 +78,7 @@ export const ui = {
   },
   en: {
     siteName: 'Comstratus',
+    aiBuildNote: 'Built entirely with free AI tools',
     nav: { home: 'Home', services: 'Services', about: 'About', contact: 'Contact' },
     langLabel: 'Language',
     navLabel: 'Main navigation',
@@ -142,6 +144,7 @@ export const ui = {
   },
   ar: {
     siteName: 'Comstratus',
+    aiBuildNote: 'أُنشئ هذا الموقع بالكامل باستخدام أدوات ذكاء اصطناعي مجانية',
     nav: { home: 'الرئيسية', services: 'الخدمات', about: 'من نحن', contact: 'اتصل بنا' },
     langLabel: 'اللغة',
     navLabel: 'التنقل الرئيسي',

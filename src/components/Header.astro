@@ -23,9 +23,12 @@ const otherLangs = (Object.keys(languages) as Lang[]).filter((l) => l !== lang);
 
 <header class="site-header">
   <div class="container bar">
-    <a class="brand" href={`/${lang}/`} aria-label={t.siteName}>
-      <Wordmark />
-    </a>
+    <div class="brand-group">
+      <a class="brand" href={`/${lang}/`} aria-label={t.siteName}>
+        <Wordmark />
+      </a>
+      <span class="ai-build-note">{t.aiBuildNote}</span>
+    </div>
     <nav aria-label={t.navLabel}>
       <ul>
         {links.map((l) => (
@@ -58,7 +61,24 @@ const otherLangs = (Object.keys(languages) as Lang[]).filter((l) => l !== lang);
     flex-wrap: wrap;
     padding-block: 0.9rem;
   }
+  .brand-group {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
   .brand { text-decoration: none; }
+  .ai-build-note {
+    border-inline-start: 1px solid var(--border);
+    color: var(--muted);
+    font-size: 0.75rem;
+    line-height: 1.4;
+    max-width: 13rem;
+    padding-inline-start: 0.75rem;
+  }
+  @media (max-width: 520px) {
+    .brand-group { flex-wrap: wrap; }
+    .ai-build-note { max-width: 11rem; }
+  }
   nav ul {
     display: flex;
     gap: 1.5rem;
