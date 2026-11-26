@@ -1,0 +1,10 @@
+{
+  "$schema": "https://developers.cloudflare.com/workers/wrangler/config-schema.json",
+  "name": "comstratus-contact",
+  "main": "index.js",
+  "compatibility_date": "2026-11-26",
+  "workers_dev": true,
+  "vars": {
+    "ALLOWED_ORIGINS": "https://www.comstratus.ca,https://comstratus.ca,https://www.comstratus.com,https://comstratus.com,http://localhost:4321,http://127.0.0.1:4321"
+  }
+}

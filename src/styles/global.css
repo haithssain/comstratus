@@ -118,6 +118,20 @@ a { color: var(--primary); }
   border-color: var(--primary);
 }
 .form-grid textarea { resize: vertical; }
+.form-status { margin-top: 1rem; }
+.form-status[data-state="success"] { color: var(--primary-dark); }
+.form-status[data-state="error"] { color: #a12622; }
+.honeypot {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
 @media (max-width: 720px) {
   .form-grid { grid-template-columns: 1fr; }
   .form-grid .full-width { grid-column: auto; }

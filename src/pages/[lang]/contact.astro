@@ -21,7 +21,15 @@ const t = ui[lang];
           {t.contact.button}
         </button>
       </div>
-      <form id="contact-form" class="contact-form" hidden>
+      <form
+        id="contact-form"
+        class="contact-form"
+        data-sending={t.contact.sending}
+        data-success={t.contact.success}
+        data-send-error={t.contact.sendError}
+        data-configuration-error={t.contact.configurationError}
+        hidden
+      >
         <div class="form-grid">
           <label>
             {t.contact.subjectLabel} *
@@ -52,12 +60,16 @@ const t = ui[lang];
           </label>
           <label class="full-width">
             {t.contact.projectLabel} *
-            <textarea name="project" rows="8" required></textarea>
+            <textarea name="project" rows="8" maxlength="10000" required></textarea>
           </label>
+        </div>
+        <div class="honeypot" aria-hidden="true">
+          <label>Website<input name="website" type="text" tabindex="-1" autocomplete="off" /></label>
         </div>
         <div class="actions">
           <button class="btn" type="submit">{t.contact.send}</button>
         </div>
+        <p id="contact-status" class="form-status" role="status" aria-live="polite"></p>
       </form>
     </div>
   </section>
@@ -74,65 +86,53 @@ const t = ui[lang];
     form.scrollIntoView({ behavior: 'smooth', block: 'start' });
   });
 
-  form?.addEventListener('submit', (event) => {
+  form?.addEventListener('submit', async (event) => {
     event.preventDefault();
 
+    const status = document.querySelector<HTMLElement>('#contact-status');
+    const sendButton = form.querySelector<HTMLButtonElement>('button[type="submit"]');
+    const apiUrl = import.meta.env.PUBLIC_CONTACT_API_URL?.trim();
+    if (!status || !sendButton) return;
+
+    if (!apiUrl) {
+      status.textContent = form.dataset.configurationError || '';
+      status.dataset.state = 'error';
+      return;
+    }
+
     const data = new FormData(form);
-    const subject = String(data.get('subject') || '');
-    const firstName = String(data.get('firstName') || '');
-    const lastName = String(data.get('lastName') || '');
-    const email = String(data.get('email') || '');
-    const phone = String(data.get('phone') || '');
-    const company = String(data.get('company') || '');
-    const project = String(data.get('project') || '');
-    const hostname = window.location.hostname.toLowerCase();
-    const domain = hostname.includes('.com') ? 'comstratus.com' : 'comstratus.ca';
+    status.textContent = form.dataset.sending || '';
+    status.dataset.state = 'pending';
+    sendButton.disabled = true;
 
-    const language = document.documentElement.lang;
-    const labels = language === 'ar'
-      ? {
-          subject: 'الموضوع',
-          firstName: 'الاسم الأول',
-          lastName: 'اسم العائلة',
-          email: 'البريد الإلكتروني',
-          phone: 'الهاتف',
-          company: 'الشركة',
-          project: 'المشروع',
-        }
-      : language === 'en'
-        ? {
-            subject: 'Subject',
-            firstName: 'First name',
-            lastName: 'Last name',
-            email: 'Email',
-            phone: 'Phone',
-            company: 'Company',
-            project: 'Project',
-          }
-        : {
-            subject: 'Sujet',
-            firstName: 'Prénom',
-            lastName: 'Nom',
-            email: 'Courriel',
-            phone: 'Téléphone',
-            company: 'Entreprise',
-            project: 'Projet',
-          };
+    try {
+      const response = await fetch(apiUrl, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          locale: document.documentElement.lang,
+          subject: data.get('subject'),
+          firstName: data.get('firstName'),
+          lastName: data.get('lastName'),
+          email: data.get('email'),
+          phone: data.get('phone'),
+          company: data.get('company'),
+          project: data.get('project'),
+          website: data.get('website'),
+        }),
+      });
 
-    const body = [
-      `${labels.subject}: ${subject}`,
-      '',
-      `${labels.firstName}: ${firstName}`,
-      `${labels.lastName}: ${lastName}`,
-      `${labels.email}: ${email}`,
-      `${labels.phone}: ${phone || '-'}`,
-      `${labels.company}: ${company || '-'}`,
-      '',
-      `${labels.project}:`,
-      project,
-    ].join('\r\n');
+      if (!response.ok) throw new Error(`Contact request failed (${response.status})`);
 
-    const mailSubject = `${domain} - ${subject}`;
-    window.location.href = `mailto:hassan.aithssain@gmail.com?subject=${encodeURIComponent(mailSubject)}&body=${encodeURIComponent(body)}`;
+      status.textContent = form.dataset.success || '';
+      status.dataset.state = 'success';
+      form.reset();
+    } catch (error) {
+      console.error('Unable to submit contact form:', error);
+      status.textContent = form.dataset.sendError || '';
+      status.dataset.state = 'error';
+    } finally {
+      sendButton.disabled = false;
+    }
   });
 </script>
