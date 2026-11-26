@@ -1,16 +1,11 @@
 :root {
-  /* Base neutre + couleurs tirées du logo */
-  --text: #1f2933;
-  --muted: #52606d;
+  --text: #24343d;
+  --muted: #596b75;
   --bg: #ffffff;
-  --bg-soft: #f5f7fa;
-  --border: #e1e6ec;
-  --primary: #2a35c9;      /* bleu du logo, adouci */
-  --primary-dark: #1f28a0;
-  --green: #1b7a1b;
-  --gold: #e8a317;
-  --red: #e02020;
-  --purple: #6a2fa0;
+  --bg-soft: #f4f8f8;
+  --border: #dde7e7;
+  --primary: #176b72;
+  --primary-dark: #12555b;
   --radius: 12px;
 }
 
@@ -39,7 +34,24 @@ a { color: var(--primary); }
 .section { padding-block: 3.5rem; }
 .section.soft { background: var(--bg-soft); }
 
-.hero { padding-block: 5rem 4rem; }
+.hero {
+  overflow: hidden;
+  padding-block: 4.5rem 4rem;
+  background: linear-gradient(115deg, #fff 34%, #f3f8f9 100%);
+}
+.hero-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(280px, 0.9fr);
+  align-items: center;
+  gap: 1.5rem;
+}
+.hero-copy { position: relative; z-index: 1; }
+.hero-clouds {
+  display: block;
+  width: 100%;
+  max-height: 340px;
+  object-fit: contain;
+}
 .hero p { font-size: 1.15rem; color: var(--muted); max-width: 42rem; }
 
 .actions { display: flex; gap: 0.75rem; flex-wrap: wrap; margin-top: 1.5rem; }
@@ -67,13 +79,16 @@ a { color: var(--primary); }
   border-radius: var(--radius);
   padding: 1.5rem;
 }
-.card:nth-child(3n+1) { border-top-color: var(--green); }
-.card:nth-child(3n+2) { border-top-color: var(--gold); }
-.card:nth-child(3n+3) { border-top-color: var(--purple); }
 .card p { color: var(--muted); margin: 0; }
 
 .prose { max-width: 46rem; }
 .prose p { font-size: 1.05rem; }
+
+@media (max-width: 720px) {
+  .hero { padding-block: 3rem 2rem; }
+  .hero-layout { grid-template-columns: 1fr; gap: 0.5rem; }
+  .hero-clouds { max-height: 220px; }
+}
 
 .lead { color: var(--muted); font-size: 1.1rem; max-width: 42rem; }
 
