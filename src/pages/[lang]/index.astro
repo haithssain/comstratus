@@ -12,16 +12,13 @@ const t = ui[lang];
 
 <Base lang={lang} page="home" title={t.home.title} description={t.home.description}>
   <section class="hero">
-    <div class="container hero-layout">
-      <div class="hero-copy">
-        <h1>{t.home.heroTitle}</h1>
-        <p>{t.home.heroText}</p>
-        <div class="actions">
-          <a class="btn" href={`/${lang}/contact/`}>{t.home.ctaPrimary}</a>
-          <a class="btn secondary" href={`/${lang}/services/`}>{t.home.ctaSecondary}</a>
-        </div>
+    <div class="container">
+      <h1>{t.home.heroTitle}</h1>
+      <p>{t.home.heroText}</p>
+      <div class="actions">
+        <a class="btn" href={`/${lang}/contact/`}>{t.home.ctaPrimary}</a>
+        <a class="btn secondary" href={`/${lang}/services/`}>{t.home.ctaSecondary}</a>
       </div>
-      <img class="hero-clouds" src="/stratus-cloudscape.svg" alt="" aria-hidden="true" />
     </div>
   </section>
 

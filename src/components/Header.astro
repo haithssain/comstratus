@@ -44,7 +44,8 @@ const otherLangs = (Object.keys(languages) as Lang[]).filter((l) => l !== lang);
 <style>
   .site-header {
     border-bottom: 1px solid var(--border);
-    background: #fff;
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(12px);
     position: sticky;
     top: 0;
     z-index: 10;
