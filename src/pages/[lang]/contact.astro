@@ -17,9 +17,122 @@ const t = ui[lang];
       <p class="lead">{t.contact.intro}</p>
       <p><strong>{t.contact.emailLabel} :</strong> <a href={`mailto:${t.contact.email}`}>{t.contact.email}</a></p>
       <div class="actions">
-        <a class="btn" href={`mailto:${t.contact.email}`}>{t.contact.button}</a>
+        <button class="btn" id="show-contact-form" type="button" aria-controls="contact-form" aria-expanded="false">
+          {t.contact.button}
+        </button>
       </div>
-      <p style="margin-top:2rem;color:var(--muted);font-size:0.9rem">{t.contact.note}</p>
+      <form id="contact-form" class="contact-form" hidden>
+        <div class="form-grid">
+          <label>
+            {t.contact.subjectLabel} *
+            <select id="contact-subject" name="subject" required>
+              <option value=""></option>
+              {t.contact.subjectOptions.map((subject) => <option value={subject}>{subject}</option>)}
+            </select>
+          </label>
+          <label>
+            {t.contact.firstNameLabel} *
+            <input name="firstName" type="text" maxlength="40" required />
+          </label>
+          <label>
+            {t.contact.lastNameLabel} *
+            <input name="lastName" type="text" maxlength="80" required />
+          </label>
+          <label>
+            {t.contact.emailLabel} *
+            <input name="email" type="email" maxlength="255" required />
+          </label>
+          <label>
+            {t.contact.phoneLabel}
+            <input name="phone" type="tel" maxlength="40" />
+          </label>
+          <label>
+            {t.contact.companyLabel}
+            <input name="company" type="text" maxlength="255" />
+          </label>
+          <label class="full-width">
+            {t.contact.projectLabel} *
+            <textarea name="project" rows="8" required></textarea>
+          </label>
+        </div>
+        <div class="actions">
+          <button class="btn" type="submit">{t.contact.send}</button>
+        </div>
+      </form>
     </div>
   </section>
 </Base>
+
+<script>
+  const showButton = document.querySelector<HTMLButtonElement>('#show-contact-form');
+  const form = document.querySelector<HTMLFormElement>('#contact-form');
+
+  showButton?.addEventListener('click', () => {
+    if (!form) return;
+    form.hidden = false;
+    showButton.setAttribute('aria-expanded', 'true');
+    form.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+
+  form?.addEventListener('submit', (event) => {
+    event.preventDefault();
+
+    const data = new FormData(form);
+    const subject = String(data.get('subject') || '');
+    const firstName = String(data.get('firstName') || '');
+    const lastName = String(data.get('lastName') || '');
+    const email = String(data.get('email') || '');
+    const phone = String(data.get('phone') || '');
+    const company = String(data.get('company') || '');
+    const project = String(data.get('project') || '');
+    const hostname = window.location.hostname.toLowerCase();
+    const domain = hostname.includes('.com') ? 'comstratus.com' : 'comstratus.ca';
+
+    const language = document.documentElement.lang;
+    const labels = language === 'ar'
+      ? {
+          subject: 'الموضوع',
+          firstName: 'الاسم الأول',
+          lastName: 'اسم العائلة',
+          email: 'البريد الإلكتروني',
+          phone: 'الهاتف',
+          company: 'الشركة',
+          project: 'المشروع',
+        }
+      : language === 'en'
+        ? {
+            subject: 'Subject',
+            firstName: 'First name',
+            lastName: 'Last name',
+            email: 'Email',
+            phone: 'Phone',
+            company: 'Company',
+            project: 'Project',
+          }
+        : {
+            subject: 'Sujet',
+            firstName: 'Prénom',
+            lastName: 'Nom',
+            email: 'Courriel',
+            phone: 'Téléphone',
+            company: 'Entreprise',
+            project: 'Projet',
+          };
+
+    const body = [
+      `${labels.subject}: ${subject}`,
+      '',
+      `${labels.firstName}: ${firstName}`,
+      `${labels.lastName}: ${lastName}`,
+      `${labels.email}: ${email}`,
+      `${labels.phone}: ${phone || '-'}`,
+      `${labels.company}: ${company || '-'}`,
+      '',
+      `${labels.project}:`,
+      project,
+    ].join('\r\n');
+
+    const mailSubject = `${domain} - ${subject}`;
+    window.location.href = `mailto:hassan.aithssain@gmail.com?subject=${encodeURIComponent(mailSubject)}&body=${encodeURIComponent(body)}`;
+  });
+</script>
